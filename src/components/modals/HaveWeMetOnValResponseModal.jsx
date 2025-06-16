@@ -75,7 +75,7 @@ export default function HaveWeMetOnValResponseModal({ inputData, setModalOpen })
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 500,
-        bgcolor: getBackgroundColor(),
+        bgcolor: getBackgroundColor(isDarkMode),
         border: '2px solid #000000',
         boxShadow: 24,
         p: 4

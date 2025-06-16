@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { ThemeContext } from '../../../App'
 import { getBackgroundColor } from '../../../Utils/colorUtils'
 
 import AudioPlayer from 'react-h5-audio-player'
@@ -28,6 +29,8 @@ function MusicCard({ title, src }) {
 }
 
 export default function MusicWorksPage() {
+    const { isDarkMode } = useContext(ThemeContext)
+
     const { musics } = playlist
 
     useEffect(() => {
@@ -43,12 +46,12 @@ export default function MusicWorksPage() {
             style={{
                 paddingTop: '44px',
                 paddingBottom: '50px',
-                backgroundColor: getBackgroundColor(),
+                backgroundColor: getBackgroundColor(isDarkMode),
                 minHeight: window.innerHeight - 44
             }}
         >
-            <h1 className={`text-${getFontColorText()}`}>Music Works</h1>
-            <h6 className={`text-${getFontColorText()}`}>
+            <h1 className={`text-${getFontColorText(isDarkMode)}`}>Music Works</h1>
+            <h6 className={`text-${getFontColorText(isDarkMode)}`}>
                 <i>
                     Contains audio files for some of the musical works I've done
                     in the past as a drummer (in chronological order)

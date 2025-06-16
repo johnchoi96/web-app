@@ -46,7 +46,7 @@ export default function MyInfoBanner() {
                             <HashLink
                                 style={{
                                     textDecoration: 'none',
-                                    color: getFontColorText()
+                                    color: getFontColorText(isDarkMode)
                                 }}
                                 smooth
                                 to='#experiences'
@@ -59,7 +59,7 @@ export default function MyInfoBanner() {
                                     <HashLink
                                         style={{
                                             textDecoration: 'none',
-                                            color: getFontColorText()
+                                            color: getFontColorText(isDarkMode)
                                         }}
                                         smooth
                                         to='#education'

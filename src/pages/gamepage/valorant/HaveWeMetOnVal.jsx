@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { ThemeContext } from '../../../App'
 import { useForm } from 'react-hook-form'
 import { sendPageview } from '../../../analytics/useAnalyticsEventTracker'
 import { getBackgroundColor } from '../../../Utils/colorUtils'
@@ -9,6 +10,9 @@ import './HaveWeMetOnVal.style.css'
 import HaveWeMetOnValResponseModal from '../../../components/modals/HaveWeMetOnValResponseModal'
 
 export default function HaveWeMetOnVal() {
+
+    const { isDarkMode } = useContext(ThemeContext)
+
     const { register, handleSubmit } = useForm()
 
     const [detailModalOpen, setDetailModalOpen] = useState(false)
@@ -36,7 +40,7 @@ export default function HaveWeMetOnVal() {
             style={{
                 paddingTop: '44px',
                 paddingBottom: '50px',
-                backgroundColor: getBackgroundColor(),
+                backgroundColor: getBackgroundColor(isDarkMode),
                 minHeight: window.innerHeight - 44
             }}
         >
@@ -44,7 +48,7 @@ export default function HaveWeMetOnVal() {
             {
                 detailModalOpen ? <HaveWeMetOnValResponseModal inputData={inputData} setModalOpen={setDetailModalOpen} /> : <></>
             }
-            <h1 className={`text-${getFontColorText()}`}>
+            <h1 className={`text-${getFontColorText(isDarkMode)}`}>
                 Have We Met On Val?
             </h1>
             <form className='myForm' onSubmit={handleSubmit(onSubmit)}>
@@ -80,7 +84,7 @@ export default function HaveWeMetOnVal() {
                 </button>
             </form>
             <footer style={{
-                color: getFontColorText()
+                color: getFontColorText(isDarkMode)
             }}>
                 <i>Work in progress; Last updated: Feb 1, 2024</i>
             </footer>

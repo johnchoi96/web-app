@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { ThemeContext } from '../../App'
 import { sendPageview } from '../../analytics/useAnalyticsEventTracker'
 import { getBackgroundColor, getFontColorText } from '../../Utils/colorUtils'
 
-function CertificateElement({ data }) {
+function CertificateElement({ data, isDarkMode }) {
     return (
         <div style={{ paddingBottom: '3rem' }}>
-            <h5 className={`text-${getFontColorText()}`}>
+            <h5 className={`text-${getFontColorText(isDarkMode)}`}>
                 {data.title}
             </h5>
             <object
@@ -14,7 +15,7 @@ function CertificateElement({ data }) {
                 width='800px'
                 height='650px'
             >
-                <p className={`text-${getFontColorText()}`}>
+                <p className={`text-${getFontColorText(isDarkMode)}`}>
                     Your web browser doesn't have a PDF plugin. Instead you can&nbsp;
                     <a href={process.env.PUBLIC_URL + data.pdfSrc}>
                         click here to download the PDF file.
@@ -26,6 +27,8 @@ function CertificateElement({ data }) {
 }
 
 export default function CertificatePage() {
+
+    const { isDarkMode } = useContext(ThemeContext)
 
     useEffect(() => {
         document.body.style.overflow = 'scroll'
@@ -50,11 +53,11 @@ export default function CertificatePage() {
         <div style={{
             paddingTop: '44px',
             minHeight: (window.innerHeight - 44),
-            backgroundColor: getBackgroundColor()
+            backgroundColor: getBackgroundColor(isDarkMode)
         }}>
             {
                 certs.map((cert, i) => {
-                    return <CertificateElement key={i} data={cert} />
+                    return <CertificateElement key={i} data={cert} isDarkMode={isDarkMode} />
                 })
             }
         </div>

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
+import { ThemeContext } from '../../../App'
 import { getBackgroundColor } from '../../../Utils/colorUtils'
 import { sendPageview } from '../../../analytics/useAnalyticsEventTracker'
 import { getFontColorText } from '../../../Utils/colorUtils'
@@ -76,6 +77,8 @@ function ProjectCard({ projectName, projectDesc, techStacks, links, imgSrc }) {
 }
 
 export default function SoftwareWorksPage() {
+    const { isDarkMode } = useContext(ThemeContext)
+
     useEffect(() => {
         document.body.style.overflow = 'scroll'
     }, [])
@@ -89,12 +92,12 @@ export default function SoftwareWorksPage() {
             style={{
                 paddingTop: '44px',
                 paddingBottom: '50px',
-                backgroundColor: getBackgroundColor(),
+                backgroundColor: getBackgroundColor(isDarkMode),
                 minHeight: window.innerHeight - 44
             }}
         >
-            <h1 className={`text-${getFontColorText()}`}>Software Works</h1>
-            <h6 className={`text-${getFontColorText()}`}>
+            <h1 className={`text-${getFontColorText(isDarkMode)}`}>Software Works</h1>
+            <h6 className={`text-${getFontColorText(isDarkMode)}`}>
                 <i>
                     In my free time, I like to work on side projects. This page contains some of the side projects I've worked on
                 </i>
