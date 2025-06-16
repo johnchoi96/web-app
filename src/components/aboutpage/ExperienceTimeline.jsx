@@ -21,15 +21,7 @@ export default function ExperienceTimeline() {
         isDarkMode ? setLineColor('white') : setLineColor('#000000')
     }, [isDarkMode])
 
-    const getCompanies = () => {
-        let companyList = [...companies]
-        const currentDate = new Date()
-        const jpmcLastDay = new Date('2025-05-22')
-        if (currentDate < jpmcLastDay) {
-            companyList.shift()
-        }
-        return companyList
-    }
+    const getCompanies = () => companies
 
     return (
         <VerticalTimeline lineColor={lineColor}>
