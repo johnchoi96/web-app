@@ -1,6 +1,3 @@
-import { useContext } from 'react'
-import { ThemeContext } from '../App'
-
 export function fontColorForBackground(color) {
     color = color.charAt(0) === '#' ? color.substring(1, 7) : color
     const red = parseInt(color.substring(0, 2), 16)
@@ -11,32 +8,16 @@ export function fontColorForBackground(color) {
         : 'white'
 }
 
-
-export const jpmcLightColor = '#DEE4E7'
-
-export const jpmcDarkColor = '#003057'
-
-export function getBackgroundColor() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { isDarkMode } = useContext(ThemeContext)
-    const currentDate = new Date()
-    const jpmcLastDay = new Date('2025-05-22')
-    if (currentDate < jpmcLastDay) {
-        return isDarkMode ? jpmcDarkColor : jpmcLightColor
-    }
+export function getBackgroundColor(isDarkMode) {
     const colorUtils = new ColorUtils(isDarkMode)
     return isDarkMode ? colorUtils.getRandomDarkColor(isDarkMode) : colorUtils.getRandomLightColor(isDarkMode)
 }
 
-export function getFontColorText() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { isDarkMode } = useContext(ThemeContext)
+export function getFontColorText(isDarkMode) {
     return isDarkMode ? 'white' : 'black'
 }
 
-export function getFontColor() {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { isDarkMode } = useContext(ThemeContext)
+export function getFontColor(isDarkMode) {
     return isDarkMode ? '#FFFFFF' : '#000000'
 }
 

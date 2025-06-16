@@ -23,7 +23,7 @@ export default function About() {
     return (
         <div
             style={{
-                backgroundColor: getBackgroundColor()
+                backgroundColor: getBackgroundColor(isDarkMode)
             }}
         >
             <MyInfoBanner />

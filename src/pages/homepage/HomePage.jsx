@@ -60,16 +60,6 @@ export default function HomePage() {
     }, [isDarkMode])
 
     function getPositionText() {
-        const currentDate = new Date()
-        const jpmcLastDay = new Date('2025-05-22')
-        const appleStartDate = new Date('2025-06-16')
-
-        if (currentDate < jpmcLastDay) {
-            return 'Software Engineer II at JPMorganChase'
-        }
-        if (currentDate < appleStartDate) {
-            return 'Incoming Software Engineer at Apple'
-        }
         return 'Software Engineer at Apple'
     }
 

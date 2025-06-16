@@ -26,13 +26,16 @@ function MyWorkspaceCard({ title, image }) {
                 src={image}
                 alt='logo'
             />
-            <h3 className={`disable-text-selection text-${getFontColorText()}`}>{title}</h3>
+            <h3 className={`disable-text-selection text-${getFontColorText(isDarkMode)}`}>{title}</h3>
         </div>
     )
 }
 
 export default function MyWorkspacePage() {
+    const { isDarkMode } = useContext(ThemeContext)
+
     useEffect(() => {
+        window.scrollTo(0, 0)
         document.body.style.overflow = 'hidden'
     }, [])
 
@@ -45,17 +48,17 @@ export default function MyWorkspacePage() {
             style={{
                 paddingTop: '44px',
                 paddingBottom: '50px',
-                backgroundColor: getBackgroundColor(),
+                backgroundColor: getBackgroundColor(isDarkMode),
                 minHeight: window.innerHeight - 44
             }}
         >
             <div
                 className='container'
                 style={{
-                    backgroundColor: getBackgroundColor()
+                    backgroundColor: getBackgroundColor(isDarkMode)
                 }}
             >
-                <h1 className={`text-${getFontColorText()}`}>My Workspace</h1>
+                <h1 className={`text-${getFontColorText(isDarkMode)}`}>My Workspace</h1>
 
                 <div className='container mt-5'>
                     <div className='row row-cols-1 row-cols-md-2 g-4'>
