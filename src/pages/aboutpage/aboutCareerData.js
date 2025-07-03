@@ -13,7 +13,7 @@ export const companies = [
         },
         color: '#000000',
         descriptions: [
-            'Software Engineer in Apple IS&T group',
+            'Software Engineer in Apple IS&T org',
             "IS&T supports both customer-facing and internal platforms from apple.com and Apple Retail systems, to tools used by AppleCare, People teams, and enterprise-wide data and identity platforms."
         ]
     },
