@@ -11,6 +11,7 @@ import './Header.styles.scss'
 import { isMobile } from 'react-device-detect'
 import { getRequestForPing } from '../../../Utils/httpRequests'
 import WebServiceStatusDetailModal from '../../modals/WebServiceStatusDetailModal'
+import { config } from 'Constants'
 
 export default function Header({ setToastState }) {
     const [modalOpen, setModalOpen] = useState(false)
@@ -196,10 +197,7 @@ export default function Header({ setToastState }) {
                             <li className='nav-item'>
                                 <a
                                     className='nav-link'
-                                    href={
-                                        process.env.PUBLIC_URL +
-                                        '/assets/files/Resume.pdf'
-                                    }
+                                    href={config.endpoint.resume}
                                     onClick={() =>
                                         sendPageview(
                                             '/resume',
